@@ -21,7 +21,8 @@ class StationListPage extends StatelessWidget {
   List<String> getStations() {
     List<String> stations = [];
     try {
-      final file = File('assets/stations.txt');
+      final uri = Uri.file('assets/stations.txt');
+      final file = File.fromUri(uri);
       print("파일 경로 ${file.path}");
       print("파일 존재 여부 ${file.existsSync()}");
       final contents = file.readAsStringSync();
