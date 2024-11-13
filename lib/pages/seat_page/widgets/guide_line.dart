@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/seat_page/widgets/seats.dart';
 
 class GuideLine extends StatelessWidget {
+  void Function(String) setSeatInfo;
+  GuideLine({required this.setSeatInfo});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -106,7 +108,10 @@ class GuideLine extends StatelessWidget {
         ),
         ...List.generate(
           20,
-          (index) => Seats(isSelected: false),
+          (index) => Seats(
+              isSelected: false,
+              seatInfo: "$label-${index + 1}",
+              setSeatInfo: setSeatInfo),
         ),
       ],
     );
