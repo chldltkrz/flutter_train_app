@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Button extends StatelessWidget {
+class SeatButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(

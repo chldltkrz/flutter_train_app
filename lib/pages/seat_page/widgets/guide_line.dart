@@ -106,7 +106,7 @@ class GuideLine extends StatelessWidget {
         ),
         ...List.generate(
           20,
-          (index) => Seats(),
+          (index) => Seats(isSelected: false),
         ),
       ],
     );

@@ -3,6 +3,9 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_train_app/pages/station_list/widgets/item.dart';
 
 class StationListPage extends StatelessWidget {
+  StationListPage({required this.onChanged});
+  void Function(String) onChanged;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +28,9 @@ class StationListPage extends StatelessWidget {
             List<String> stations = snapshot.data!;
             return Column(
               children: [
-                ...stations.map((station) => Item(stationName: station)),
+                ...stations.map((station) => GestureDetector(
+                    onTap: () => {onChanged(station), Navigator.pop(context)},
+                    child: Item(stationName: station))),
               ],
             );
           }
