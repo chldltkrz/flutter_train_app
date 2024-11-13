@@ -18,40 +18,46 @@ class SeatButton extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              showCupertinoDialog(
-                  context: context,
-                  builder: (context) {
-                    return CupertinoAlertDialog(
-                      title: Text('예매 하시겠습니까?'),
-                      content: Text("좌석 : ${seatInfo.join(', ')}"),
-                      actions: [
-                        CupertinoDialogAction(
-                          child: Text('취소'),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                        CupertinoDialogAction(
-                          child: Text('확인'),
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.of(context).pop();
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Center(
-                                child: Text(
-                                  '예약이 확정되었습니다.',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              duration: Duration(seconds: 2),
-                            ));
-                          },
-                        ),
-                      ],
-                    );
-                  });
+              seatInfo.length == 0
+                  ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('좌석을 선택해주세요.'),
+                      duration: Duration(seconds: 2),
+                    ))
+                  : showCupertinoDialog(
+                      context: context,
+                      builder: (context) {
+                        return CupertinoAlertDialog(
+                          title: Text('예매 하시겠습니까?'),
+                          content: Text("좌석 : ${seatInfo.join(', ')}"),
+                          actions: [
+                            CupertinoDialogAction(
+                              child: Text('취소'),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            CupertinoDialogAction(
+                              child: Text('확인'),
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Navigator.of(context).pop();
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Center(
+                                    child: Text(
+                                      '예약이 확정되었습니다.',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  duration: Duration(seconds: 2),
+                                ));
+                              },
+                            ),
+                          ],
+                        );
+                      });
             },
             child: Text(
               "예매하기",

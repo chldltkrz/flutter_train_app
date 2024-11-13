@@ -16,6 +16,7 @@ class SeatPage extends StatefulWidget {
 class _SeatPageState extends State<SeatPage> {
   String departure;
   String destination;
+
   _SeatPageState(this.destination, this.departure);
 
   List<String> seatInfo = [];

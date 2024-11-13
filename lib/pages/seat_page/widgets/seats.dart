@@ -35,6 +35,13 @@ class _SeatsState extends State<Seats> {
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       child: GestureDetector(
         onTap: () {
+          if (selectedSeat.contains(seatInfo)) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('이미 선택된 좌석입니다.'),
+              duration: Duration(seconds: 2),
+            ));
+            return;
+          }
           setState(() {
             isSelected = !isSelected;
             if (isSelected) {
