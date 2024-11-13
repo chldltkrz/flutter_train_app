@@ -18,10 +18,10 @@ class _SeatPageState extends State<SeatPage> {
   String destination;
   _SeatPageState(this.destination, this.departure);
 
-  String seatInfo = "";
-  void setSeatInfo(String seatInfo) {
+  List<String> seatInfo = [];
+  void setSeatInfo(String seatInfoString) {
     setState(() {
-      this.seatInfo = seatInfo;
+      this.seatInfo.add(seatInfoString);
     });
   }
 

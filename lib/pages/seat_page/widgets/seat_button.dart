@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SeatButton extends StatelessWidget {
-  String seatInfo;
+  List<String> seatInfo;
   SeatButton({required this.seatInfo});
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class SeatButton extends StatelessWidget {
                   builder: (context) {
                     return CupertinoAlertDialog(
                       title: Text('예매 하시겠습니까?'),
-                      content: Text("좌석 : $seatInfo"),
+                      content: Text("좌석 : ${seatInfo.join(', ')}"),
                       actions: [
                         CupertinoDialogAction(
                           child: Text('취소'),
