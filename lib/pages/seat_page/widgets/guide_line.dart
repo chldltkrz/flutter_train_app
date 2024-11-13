@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/seat_page/widgets/seats.dart';
 
-class GuideLine extends StatelessWidget {
+class GuideLine extends StatefulWidget {
   void Function(String) setSeatInfo;
   GuideLine({required this.setSeatInfo});
+
+  @override
+  State<GuideLine> createState() => _GuideLineState();
+}
+
+class _GuideLineState extends State<GuideLine> {
+  static Set<String> selectedSeat = {};
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,10 +70,6 @@ class GuideLine extends StatelessWidget {
             ),
             Column(
               children: [
-                Text(
-                  " ",
-                  style: TextStyle(fontSize: 18),
-                ),
                 ...List.generate(
                     20,
                     (index) => Padding(
@@ -109,9 +112,11 @@ class GuideLine extends StatelessWidget {
         ...List.generate(
           20,
           (index) => Seats(
-              isSelected: false,
-              seatInfo: "$label-${index + 1}",
-              setSeatInfo: setSeatInfo),
+            isSelected: selectedSeat.contains("$label-${index + 1}"),
+            seatInfo: "$label-${index + 1}",
+            setSeatInfo: widget.setSeatInfo,
+            selectedSeat: selectedSeat,
+          ),
         ),
       ],
     );

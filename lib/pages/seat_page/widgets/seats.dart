@@ -4,23 +4,30 @@ class Seats extends StatefulWidget {
   Seats(
       {required this.isSelected,
       required this.seatInfo,
-      required this.setSeatInfo});
+      required this.setSeatInfo,
+      required this.selectedSeat});
   bool isSelected;
   String seatInfo;
   void Function(String) setSeatInfo;
+  Set<String> selectedSeat;
   @override
   State<Seats> createState() => _SeatsState(
-      isSelected: isSelected, seatInfo: seatInfo, setSeatInfo: setSeatInfo);
+      isSelected: isSelected,
+      seatInfo: seatInfo,
+      setSeatInfo: setSeatInfo,
+      selectedSeat: selectedSeat);
 }
 
 class _SeatsState extends State<Seats> {
   bool isSelected;
   String seatInfo;
   void Function(String) setSeatInfo;
+  Set<String> selectedSeat;
   _SeatsState(
       {required this.isSelected,
       required this.seatInfo,
-      required this.setSeatInfo});
+      required this.setSeatInfo,
+      required this.selectedSeat});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +39,7 @@ class _SeatsState extends State<Seats> {
             isSelected = !isSelected;
             if (isSelected) {
               setSeatInfo(seatInfo);
+              selectedSeat.add(seatInfo);
             } else {
               setSeatInfo("");
             }
