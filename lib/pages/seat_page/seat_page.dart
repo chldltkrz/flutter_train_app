@@ -35,7 +35,10 @@ class _SeatPageState extends State<SeatPage> {
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
-              Heading(widget.destination, widget.departure),
+              Heading(
+                widget.departure,
+                widget.destination,
+              ),
               Expanded(
                 child: ListView(
                   shrinkWrap: true,
