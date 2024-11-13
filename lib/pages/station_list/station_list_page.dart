@@ -32,18 +32,25 @@ class _StationListPageState extends State<StationListPage> {
           }
           // When the Future completes with data
           else if (snapshot.hasData) {
+            // Filter out the selected stations from the list
+            // and store the remaining stations in a new list
             List<String> stations = snapshot.data!
                 .where((station) => !selectedStations.contains(station))
                 .toList();
             if (stations.isEmpty) {
               return Center(child: Text("No station available"));
             }
+            // Display the list of stations
+            // Use a Column widget to display the list of stations
             return Column(
               children: [
                 ...stations.map((station) => GestureDetector(
                     onTap: () => {
                           widget.onChanged(station),
                           Navigator.pop(context),
+                          // if the station is already selected, remove it from the list
+                          // otherwise, if the list has more than one station, remove the first station
+                          // and add the selected station
                           if (selectedStations.length > 1)
                             {
                               selectedStations.remove(selectedStations.first),

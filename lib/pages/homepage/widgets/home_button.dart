@@ -18,6 +18,8 @@ class HomeButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.purple,
         ),
+        // If the departure and destination are set, navigate to the SeatPage
+        // Otherwise, show a snackbar that says "출발역과 도착역을 선택해주세요."
         onPressed: () {
           if (isStationsSet) {
             Navigator.push(context, MaterialPageRoute(builder: (context) {

@@ -18,11 +18,13 @@ class SeatButton extends StatelessWidget {
               ),
             ),
             onPressed: () {
+              // Show a snackbar if no seat is selected
               seatInfo.length == 0
                   ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text('좌석을 선택해주세요.'),
                       duration: Duration(seconds: 2),
                     ))
+                  // Show a dialog to confirm the reservation
                   : showCupertinoDialog(
                       context: context,
                       builder: (context) {
@@ -38,6 +40,8 @@ class SeatButton extends StatelessWidget {
                             ),
                             CupertinoDialogAction(
                               child: Text('확인'),
+                              // Pop the dialog and the SeatPage
+                              // Show a snackbar to confirm the reservation
                               onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();

@@ -54,6 +54,9 @@ class _GuideLineState extends State<GuideLine> {
           ),
         ),
         SizedBox(height: 20),
+        // drawing Actual Seats
+        // A B C D - 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -102,6 +105,7 @@ class _GuideLineState extends State<GuideLine> {
     );
   }
 
+  // make sure each seats has a unique id and property
   Widget _buildSeatColumn(String label) {
     return Column(
       children: [

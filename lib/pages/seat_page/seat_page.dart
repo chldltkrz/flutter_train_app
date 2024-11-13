@@ -19,6 +19,9 @@ class _SeatPageState extends State<SeatPage> {
 
   _SeatPageState(this.destination, this.departure);
 
+  // List to store the selected seat information
+  // e.g. ['A-1', 'B-2', 'C-3']
+  // This list will be passed to the SeatButton widget
   List<String> seatInfo = [];
   void setSeatInfo(String seatInfoString) {
     setState(() {
@@ -36,10 +39,12 @@ class _SeatPageState extends State<SeatPage> {
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
+              // Heading to show the departure and destination
               Heading(
                 widget.departure,
                 widget.destination,
               ),
+              // Expanded widget to allow the ListView to take up the remaining space
               Expanded(
                 child: ListView(
                   shrinkWrap: true,
@@ -48,6 +53,8 @@ class _SeatPageState extends State<SeatPage> {
                   ],
                 ),
               ),
+              // SeatButton widget to show the button to confirm the reservation
+              // The seatInfo list is passed to the SeatButton widget
               SeatButton(seatInfo: seatInfo),
             ],
           ),
