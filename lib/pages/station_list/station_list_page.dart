@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter_train_app/pages/station_list/widget/item.dart';
+import 'package:flutter_train_app/pages/station_list/widgets/item.dart';
 
 class StationListPage extends StatelessWidget {
   @override
