@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_train_app/pages/station_list/widget/item.dart';
 
 class StationListPage extends StatelessWidget {
@@ -9,28 +9,36 @@ class StationListPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('출발역'),
       ),
-      body: Column(
-        children: [
-          ...getStations().map((station) => Item(stationName: station)),
-        ],
+      body: FutureBuilder<List<String>>(
+        future: loadAssets(), // Load data asynchronously
+        builder: (context, snapshot) {
+          // Check if the Future is still loading
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          // Check if an error occurred
+          else if (snapshot.hasError) {
+            return Center(child: Text("Error loading stations"));
+          }
+          // When the Future completes with data
+          else if (snapshot.hasData) {
+            List<String> stations = snapshot.data!;
+            return Column(
+              children: [
+                ...stations.map((station) => Item(stationName: station)),
+              ],
+            );
+          }
+          // Fallback for an empty snapshot
+          return Center(child: Text("No stations available"));
+        },
       ),
     );
   }
 
-  List<String> getStations() {
-    List<String> stations = [];
-    try {
-      final file = File(
-          '/Users/issacchoi/development/project/flutter_train_app/assets/stations.txt');
-      final contents = file.readAsStringSync();
-      stations = contents.split(',');
-    } on FormatException {
-      print('Invalid data');
-    } on FileSystemException {
-      print('File not found');
-    } catch (e) {
-      print('Unknown error: $e');
-    }
-    return stations;
+  Future<List<String>> loadAssets() async {
+    // Load the file content as a string and split it by commas
+    String loadedString = await rootBundle.loadString("assets/stations.txt");
+    return loadedString.split(",");
   }
 }
