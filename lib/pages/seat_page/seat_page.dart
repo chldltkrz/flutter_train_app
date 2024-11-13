@@ -16,6 +16,7 @@ class SeatPage extends StatefulWidget {
 class _SeatPageState extends State<SeatPage> {
   String departure;
   String destination;
+  // tacking seat selection
   static Set<String> selectedSeat = {};
 
   _SeatPageState(this.destination, this.departure);

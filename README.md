@@ -1,16 +1,19 @@
-# flutter_train_app
+# 가처 예매 앱
 
-A new Flutter project.
+기차역 2개(출발, 도착)역을 선택하여 좌석을 예매 하는앱
 
-## Getting Started
+## 구현
 
-This project is a starting point for a Flutter application.
+상식적으로 생각되는 부분을 구현하였다
 
-A few resources to get you started if this is your first Flutter project:
+좌석을 선택 및 선택헤제하는 기능,
+예약된 좌석은 선택이 안되는 기능,
+여러개의 좌석을 한번에 예약하는 기능,
+출발역에서 한역을 고르면 도착역에서는 해당 역을 제외하는 기능,
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+이상 중요기능 4가지를 나열하였다.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+구현하고 싶지만 엄두가 안나는 기능으로는
+역을 변경시 예약된 좌석을 초기화하는 기능이 있다
+
+중요 페이별로 폴더를 나누고 주석을 상세히 달아 두었기 때문에 이해는 어렵지 않다고 본다
