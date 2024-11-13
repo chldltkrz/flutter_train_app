@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class SeatButton extends StatelessWidget {
   List<String> seatInfo;
-  SeatButton({required this.seatInfo});
+  Set<String> selectedSeat;
+  SeatButton({required this.seatInfo, required this.selectedSeat});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,6 +46,7 @@ class SeatButton extends StatelessWidget {
                               onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
+                                selectedSeat.addAll(seatInfo);
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(
                                   content: Center(

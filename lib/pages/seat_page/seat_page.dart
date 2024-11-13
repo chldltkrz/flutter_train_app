@@ -16,6 +16,7 @@ class SeatPage extends StatefulWidget {
 class _SeatPageState extends State<SeatPage> {
   String departure;
   String destination;
+  static Set<String> selectedSeat = {};
 
   _SeatPageState(this.destination, this.departure);
 
@@ -25,7 +26,11 @@ class _SeatPageState extends State<SeatPage> {
   List<String> seatInfo = [];
   void setSeatInfo(String seatInfoString) {
     setState(() {
-      this.seatInfo.add(seatInfoString);
+      if (seatInfo.contains(seatInfoString)) {
+        seatInfo.remove(seatInfoString);
+      } else {
+        seatInfo.add(seatInfoString);
+      }
     });
   }
 
@@ -49,13 +54,17 @@ class _SeatPageState extends State<SeatPage> {
                 child: ListView(
                   shrinkWrap: true,
                   children: [
-                    GuideLine(setSeatInfo: setSeatInfo),
+                    GuideLine(
+                        setSeatInfo: setSeatInfo, selectedSeat: selectedSeat),
                   ],
                 ),
               ),
               // SeatButton widget to show the button to confirm the reservation
               // The seatInfo list is passed to the SeatButton widget
-              SeatButton(seatInfo: seatInfo),
+              SeatButton(
+                seatInfo: seatInfo,
+                selectedSeat: selectedSeat,
+              ),
             ],
           ),
         ));

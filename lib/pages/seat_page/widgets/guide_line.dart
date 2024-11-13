@@ -3,14 +3,16 @@ import 'package:flutter_train_app/pages/seat_page/widgets/seats.dart';
 
 class GuideLine extends StatefulWidget {
   void Function(String) setSeatInfo;
-  GuideLine({required this.setSeatInfo});
+  Set<String> selectedSeat;
+  GuideLine({required this.setSeatInfo, required this.selectedSeat});
 
   @override
-  State<GuideLine> createState() => _GuideLineState();
+  State<GuideLine> createState() => _GuideLineState(selectedSeat: selectedSeat);
 }
 
 class _GuideLineState extends State<GuideLine> {
-  static Set<String> selectedSeat = {};
+  Set<String> selectedSeat;
+  _GuideLineState({required this.selectedSeat});
   @override
   Widget build(BuildContext context) {
     return Column(

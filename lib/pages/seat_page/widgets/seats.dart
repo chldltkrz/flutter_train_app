@@ -50,15 +50,9 @@ class _SeatsState extends State<Seats> {
           }
           // otherwise, change the color of the seat
           // and add the seat information to the selectedSeat list
-          // ************ unfortunately, once seat is selected, it cannot be deselected ************
           setState(() {
             isSelected = !isSelected;
-            if (isSelected) {
-              setSeatInfo(seatInfo);
-              selectedSeat.add(seatInfo);
-            } else {
-              setSeatInfo("");
-            }
+            setSeatInfo(seatInfo);
           });
         },
         // drawing the seat
